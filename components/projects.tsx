@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -8,89 +8,39 @@ import { Button } from "@/components/ui/button"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { ExternalLink, Github, X } from "lucide-react"
 import Image from "next/image"
+import { createBrowserClient } from "@/lib/supabase"
 
 type Project = {
   id: number
   title: string
   description: string
-  image: string
+  image: string | null
   tags: string[]
-  demoUrl: string
-  githubUrl: string
-  longDescription: string
+  demo_url: string | null
+  github_url: string | null
+  long_description: string | null
 }
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [projects, setProjects] = useState<Project[]>([])
 
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: "Enchanted E-Commerce",
-      description: "A magical shopping experience with animations and microinteractions",
-      image: "/placeholder.svg?height=600&width=800",
-      tags: ["React", "Next.js", "Framer Motion", "Tailwind CSS"],
-      demoUrl: "#",
-      githubUrl: "#",
-      longDescription:
-        "Enchanted E-Commerce is a full-featured online store with a magical twist. The project features custom animations for product reveals, an enchanted shopping cart experience, and spellbinding checkout flow. Built with performance and accessibility in mind, it delivers a seamless shopping experience across all devices.",
-    },
-    {
-      id: 2,
-      title: "Spellbook Dashboard",
-      description: "Admin dashboard with magical data visualizations and interactions",
-      image: "/placeholder.svg?height=600&width=800",
-      tags: ["React", "TypeScript", "D3.js", "Tailwind CSS"],
-      demoUrl: "#",
-      githubUrl: "#",
-      longDescription:
-        "Spellbook Dashboard transforms complex data into intuitive visualizations with magical interactions. The dashboard features real-time updates, customizable widgets, and interactive charts that respond to user gestures like they're casting spells. The project demonstrates advanced state management and optimization techniques.",
-    },
-    {
-      id: 3,
-      title: "Potion Maker",
-      description: "Interactive web app for creating and sharing virtual potions",
-      image: "/placeholder.svg?height=600&width=800",
-      tags: ["React", "Three.js", "WebGL", "Firebase"],
-      demoUrl: "#",
-      githubUrl: "#",
-      longDescription:
-        "Potion Maker is an interactive web application that allows users to create, customize, and share virtual potions. The app features realistic fluid simulations using WebGL, particle effects for magical interactions, and a community feature for sharing creations. The project showcases advanced 3D rendering techniques and real-time database integration.",
-    },
-    {
-      id: 4,
-      title: "Wizard's Weather",
-      description: "Weather forecast app with magical themed visualizations",
-      image: "/placeholder.svg?height=600&width=800",
-      tags: ["React", "OpenWeather API", "Canvas API", "Tailwind CSS"],
-      demoUrl: "#",
-      githubUrl: "#",
-      longDescription:
-        "Wizard's Weather transforms ordinary weather forecasts into magical experiences. The app features custom animations for different weather conditions, location-based forecasts, and interactive elements that respond to the current weather. The project demonstrates API integration, geolocation features, and advanced canvas animations.",
-    },
-    {
-      id: 5,
-      title: "Scroll Enchantment",
-      description: "Library for creating magical scroll-based animations",
-      image: "/placeholder.svg?height=600&width=800",
-      tags: ["JavaScript", "TypeScript", "Animation", "Open Source"],
-      demoUrl: "#",
-      githubUrl: "#",
-      longDescription:
-        "Scroll Enchantment is a lightweight JavaScript library that makes it easy to create magical scroll-based animations. The library provides a simple API for triggering animations based on scroll position, with support for parallax effects, reveal animations, and scroll-linked interactions. The project is fully documented and includes extensive examples.",
-    },
-    {
-      id: 6,
-      title: "Magical Music Player",
-      description: "Audio visualizer with enchanted interactions and effects",
-      image: "/placeholder.svg?height=600&width=800",
-      tags: ["React", "Web Audio API", "Canvas", "Styled Components"],
-      demoUrl: "#",
-      githubUrl: "#",
-      longDescription:
-        "Magical Music Player transforms audio into visual magic with real-time visualizations that respond to music. The player features custom waveform displays, frequency visualizations with magical particles, and interactive controls that feel enchanted. The project demonstrates advanced audio processing and canvas rendering techniques.",
-    },
-  ]
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const supabase = createBrowserClient()
+        const { data, error } = await supabase
+          .from("projects")
+          .select("*")
+          .order("id", { ascending: false })
+        if (error) throw error
+        setProjects((data as Project[]) || [])
+      } catch (e) {
+        setProjects([])
+      }
+    }
+    fetchProjects()
+  }, [])
 
   return (
     <section id="projects" className="py-20 md:py-32 relative">
@@ -104,7 +54,7 @@ export default function Projects() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500">
-              Magical Creations
+              Projects
             </span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -163,13 +113,13 @@ export default function Projects() {
                   </Button>
                   <div className="flex gap-2">
                     <Button variant="ghost" size="icon" asChild>
-                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={project.github_url || "#"} target="_blank" rel="noopener noreferrer">
                         <Github className="h-4 w-4" />
                         <span className="sr-only">GitHub</span>
                       </a>
                     </Button>
                     <Button variant="ghost" size="icon" asChild>
-                      <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={project.demo_url || "#"} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="h-4 w-4" />
                         <span className="sr-only">Live Demo</span>
                       </a>
@@ -185,7 +135,7 @@ export default function Projects() {
       <AnimatePresence>
         {selectedProject && (
           <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
-            <DialogContent className="sm:max-w-[700px] p-0 overflow-hidden bg-background/95 backdrop-blur-xl border border-purple-500/20">
+            <DialogContent className="sm:max-w-[700px] md:max-w-[800px] w-[95vw] p-0 bg-background/95 backdrop-blur-xl border border-purple-500/20 max-h-[85vh] overflow-y-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -210,7 +160,7 @@ export default function Projects() {
                     <span className="sr-only">Close</span>
                   </Button>
                 </div>
-                <div className="p-6">
+                <div className="p-6 space-y-4">
                   <DialogHeader>
                     <DialogTitle className="text-2xl font-bold">{selectedProject.title}</DialogTitle>
                     <div className="flex flex-wrap gap-2 mt-2">
@@ -221,16 +171,18 @@ export default function Projects() {
                       ))}
                     </div>
                   </DialogHeader>
-                  <DialogDescription className="mt-4 text-base">{selectedProject.longDescription}</DialogDescription>
+                  <DialogDescription className="text-base leading-relaxed">
+                    {selectedProject.long_description}
+                  </DialogDescription>
                   <div className="flex justify-between mt-6">
                     <Button asChild>
-                      <a href={selectedProject.demoUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={selectedProject.demo_url || "#"} target="_blank" rel="noopener noreferrer">
                         Live Demo
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </a>
                     </Button>
                     <Button variant="outline" asChild>
-                      <a href={selectedProject.githubUrl} target="_blank" rel="noopener noreferrer">
+                      <a href={selectedProject.github_url || "#"} target="_blank" rel="noopener noreferrer">
                         View Code
                         <Github className="ml-2 h-4 w-4" />
                       </a>
