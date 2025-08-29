@@ -20,11 +20,9 @@ export default function About() {
     "React",
     "TypeScript",
     "Next.js",
-    "Node.js",
     "Tailwind CSS",
     "Framer Motion",
-    "GraphQL",
-    "AWS",
+    "Supabase",
     "Docker",
     "Git",
   ]
@@ -56,9 +54,9 @@ export default function About() {
               className="prose prose-lg dark:prose-invert"
             >
               <p>
-                I'm a passionate software engineer with a flair for creating magical digital experiences. With over 5
-                years of experience in web development, I specialize in building responsive, accessible, and performant
-                applications.
+                I’m a passionate Software Developer with a flair for creating seamless and impactful digital experiences. 
+                Specializing in frontend development, I focus on building responsive, accessible, and scalable applications using React.js, 
+                JavaScript, and modern UI design.
               </p>
               <p>
                 My journey in the world of programming began when I discovered the enchanting power of turning ideas

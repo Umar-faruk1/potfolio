@@ -52,8 +52,10 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
             >
-              Crafting digital experiences with code and a touch of magic. I build responsive, accessible, and
-              performant web applications that captivate users.
+              Detail oriented Frontend Developer with strong expertise in building responsive, user-friendly,
+               and scalable web applications. Skilled in translating UI/UX designs into interactive applications, 
+               integrating APIs, and improving digital experiences.
+               Passionate about leveraging modern technologies to create impactful digital solutions.
             </motion.p>
 
             <motion.div
@@ -77,12 +79,6 @@ export default function Hero() {
                 </a>
               </Button>
 
-              {/* <Button variant="ghost" size="lg" className="group" asChild>
-                <Link href="/blog">
-                  Read Blog
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Link>
-              </Button> */}
             </motion.div>
           </motion.div>
 
@@ -103,7 +99,7 @@ export default function Hero() {
                 repeatType: "reverse",
                 ease: "easeInOut",
               }}
-              className="relative rounded-2xl overflow-hidden border border-purple-500/20 bg-background/80 backdrop-blur-sm shadow-xl"
+              className="relative w-45 rounded-2xl overflow-hidden border border-purple-500/20 bg-background/80 backdrop-blur-sm shadow-xl"
             >
               <Image
                 src="/image1.jpg"
