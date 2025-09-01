@@ -19,6 +19,8 @@ export default function About() {
   const skills = [
     "React",
     "TypeScript",
+    "JavaScript",
+    "Python",
     "Next.js",
     "Tailwind CSS",
     "Framer Motion",
