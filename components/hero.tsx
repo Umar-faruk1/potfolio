@@ -52,7 +52,7 @@ export default function Hero() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.7 }}
             >
-              Detail oriented Frontend Developer with strong expertise in building responsive, user-friendly,
+              Detail oriented Software Developer with strong expertise in building responsive, user-friendly,
                and scalable web applications. Skilled in translating UI/UX designs into interactive applications, 
                integrating APIs, and improving digital experiences.
                Passionate about leveraging modern technologies to create impactful digital solutions.

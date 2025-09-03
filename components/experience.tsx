@@ -26,7 +26,7 @@ export default function Experience() {
   const experiences: ExperienceItem[] = [
     {
       id: 1,
-      title: "Frontend Developer",
+      title: "Software Engineer",
       company: "Escript Solutions",
       period: "2021 - 2022",
       description:
@@ -35,7 +35,7 @@ export default function Experience() {
     },
     {
       id: 2,
-      title: "Frontend Developer",
+      title: "Software Engineer",
       company: "Omni Strategies",
       period: "2024 - 2025",
 description: `Contributing to the development and maintenance of internal software tools, focusing on functionality and user experience.
@@ -68,7 +68,7 @@ description: `Contributing to the development and maintenance of internal softwa
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-500">
-                Magical Journey
+                Professional Journey
               </span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
