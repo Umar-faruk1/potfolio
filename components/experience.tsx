@@ -35,14 +35,14 @@ export default function Experience() {
     },
     {
       id: 2,
-      title: "Software Engineer",
+      title: "Frontend Developer",
       company: "Omni Strategies",
       period: "2024 - 2025",
 description: `Contributing to the development and maintenance of internal software tools, focusing on functionality and user experience.
               Collaborating with senior developers to build scalable web applications and fix bugs.
-              Participating in code reviews and applying best practices in software development to improve code quality.
+              
 `,
-      skills: ["Reactjs", "JavaScript", "CSS", "PostgreSQL", "Nextjs", "Docker"],
+      skills: ["Reactjs", "JavaScript", "CSS", "Nextjs", "Docker"],
     },
     // {
     //   id: 3,

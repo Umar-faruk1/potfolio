@@ -37,17 +37,17 @@ export default function Skills() {
     //   icon: <Palette className="h-6 w-6 text-blue-500" />,
     //   skills: ["Framer Motion", "GSAP", "Three.js", "CSS Animations", "Figma", "UI/UX Design"],
     // },
-    {
-      id: 3,
-      title: "Backend",
-      icon: <Database className="h-6 w-6 text-purple-500" />,
-      skills: [ "MySQL", "PostgreSQL", "GraphQL", "REST APIs"],
-    },
+    // {
+    //   id: 3,
+    //   title: "Backend",
+    //   icon: <Database className="h-6 w-6 text-purple-500" />,
+    //   skills: [ "MySQL", "PostgreSQL", "REST APIs"],
+    // },
     {
       id: 4,
       title: "Tools",
       icon: <Cpu className="h-6 w-6 text-blue-500" />,
-      skills: ["Git", "GitHub", "Docker", "VS Code", "Vercel", "Netlify"],
+      skills: ["Git", "GitHub", "Docker", "VS Code", "Vercel"],
     },
     // {
     //   id: 5,

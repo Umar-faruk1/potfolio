@@ -8,8 +8,8 @@ import { Toaster } from "sonner"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Umar Faruk - Software Engineer & Magic Maker",
-  description: "Portfolio of Umar Faruk, a software engineer specializing in creating magical digital experiences.",
+  title: "Umar Faruk - Frontend Developer & Magic Maker",
+  description: "Portfolio of Umar Faruk, a Frontend Developer specializing in creating magical digital experiences.",
   
 }
 

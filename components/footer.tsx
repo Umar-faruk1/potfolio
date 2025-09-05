@@ -24,7 +24,7 @@ export default function Footer() {
               viewport={{ once: true }}
             >
               <h3 className="text-lg font-bold">Umar Faruk</h3>
-              <p className="text-muted-foreground">Software Engineer</p>
+              <p className="text-muted-foreground">Frontend Developer</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

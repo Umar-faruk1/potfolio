@@ -12,6 +12,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Mail, Send, Sparkles } from "lucide-react"
+import axios from "axios"
+
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -37,19 +39,22 @@ export default function Contact() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true)
-
-    // Simulate form submission
-    setTimeout(() => {
-      console.log(values)
-      setIsSubmitting(false)
+    try {
+      await axios.post("/api/contact", values)
       form.reset()
       toast.success("Message sent successfully!", {
         description: "I'll get back to you as soon as possible.",
         icon: <Sparkles className="h-4 w-4" />,
       })
-    }, 1500)
+    } catch (error) {
+      toast.error("Failed to send message", {
+        description: "Please try again later.",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
