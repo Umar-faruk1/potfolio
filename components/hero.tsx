@@ -32,7 +32,7 @@ export default function Hero() {
             >
               <div className="relative inline-flex items-center justify-center p-1 overflow-hidden text-sm font-medium rounded-full group bg-gradient-to-br from-purple-600 to-blue-500">
                 <span className="relative px-5 py-1.5 transition-all ease-in duration-75 bg-background dark:bg-background rounded-full">
-                  Frontend Developer
+                  Software Engineer
                 </span>
               </div>
             </motion.div>
